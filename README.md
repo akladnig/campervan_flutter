@@ -1,17 +1,7 @@
-# campervan
+# Campervan Dashboard
 
-A new Flutter project.
+A Dashboard to monitor and control the electrics in the campervan - see [Campervan](https://github.com/akladnig/CamperVan) for details of the campervan physical design using [OpenScad](https://openscad.org/) and the electrical design. 
 
-## Getting Started
+The control board for the campervan is based on an Arduino Nano ESP32. Communication between the devices is based on Websockets.
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-# campervan_flutter
+This project has only just started so it is a shell only.
