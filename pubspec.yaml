@@ -1,0 +1,57 @@
+name: template
+description: "Flutter Template"
+# The following line prevents the package from being accidentally published to
+# pub.dev using `flutter pub publish`. This is preferred for private packages.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.7.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  flutter_localizations:
+    sdk: flutter
+
+  calendar_date_picker2: ^1.1.7
+  const_date_time: ^1.1.0
+  cupertino_icons: ^1.0.8
+  file_picker: ^8.1.2
+  font_awesome_flutter: ^10.8.0
+  flutter_riverpod: ^2.6.1
+  flutter_hooks: ^0.20.5
+  google_fonts: ^6.2.1
+  go_router: ^14.2.6
+  html: ^0.15.4
+  image: ^4.3.0
+  intl: ^0.19.0
+  logger: ^2.5.0
+  path: ^1.9.0
+  path_provider: ^2.1.5
+  percent_indicator: ^4.2.3
+  riverpod_annotation: ^2.6.1
+  statistics: ^1.0.25
+  fast_immutable_collections: ^11.0.0
+  equatable: ^2.0.7
+  objectbox: ^4.1.0
+  objectbox_flutter_libs: any
+
+dev_dependencies:
+
+  flutter_test:
+    sdk: flutter
+  
+  build_runner: ^2.4.15
+  custom_lint: ^0.7.0
+  flutter_lints: ^5.0.0
+  riverpod_generator: ^2.6.2
+  riverpod_lint: ^2.6.3
+  objectbox_generator: any
+
+flutter:
+
+  uses-material-design: true
+
