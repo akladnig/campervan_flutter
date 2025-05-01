@@ -1,10 +1,10 @@
 //This is for appStartup
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:template/src/features/settings/settings_model.dart';
-import 'package:template/src/features/settings/settings_provider.dart';
-import 'package:template/src/repository/objectbox.dart';
-import 'package:template/src/repository/objectbox/objectbox_settings_model.dart';
-import 'package:template/src/utils/logging_provider.dart';
+import 'package:campervan/src/features/settings/settings_model.dart';
+import 'package:campervan/src/features/settings/settings_provider.dart';
+import 'package:campervan/src/repository/objectbox.dart';
+import 'package:campervan/src/repository/objectbox/objectbox_settings_model.dart';
+import 'package:campervan/src/utils/logging_provider.dart';
 import 'package:logger/logger.dart';
 
 Future<SettingsModel> obxLoadSettings(Ref ref) async {

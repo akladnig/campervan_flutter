@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:template/src/features/settings/settings_model.dart';
-import 'package:template/src/utils/logging_provider.dart';
+import 'package:campervan/src/features/settings/settings_model.dart';
+import 'package:campervan/src/utils/logging_provider.dart';
 import 'package:logger/logger.dart';
 import 'package:objectbox/objectbox.dart';
 

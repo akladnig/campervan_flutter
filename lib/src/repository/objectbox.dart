@@ -1,10 +1,10 @@
-import 'package:template/src/repository/objectbox/objectbox_settings_model.dart';
-import 'package:template/src/utils/testing_provider.dart';
+import 'package:campervan/src/repository/objectbox/objectbox_settings_model.dart';
+import 'package:campervan/src/utils/testing_provider.dart';
 import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import 'package:template/objectbox.g.dart';
+import 'package:campervan/objectbox.g.dart';
 
 part 'objectbox.g.dart';
 
@@ -15,14 +15,14 @@ class ObjectBox extends _$ObjectBox {
     final isTesting = ref.watch(isTestingProvider);
     if (!isTesting.$1) {
       final docsDir = await getApplicationDocumentsDirectory();
-      final store = await openStore(directory: p.join(docsDir.path, 'template'));
+      final store = await openStore(directory: p.join(docsDir.path, 'campervan'));
       return store;
     } else {
       if (isTesting.$1 && isTesting.inMemory) {
         final inMemoryStore = Store(getObjectBoxModel(), directory: 'memory:test-db');
         return inMemoryStore;
       } else {
-        final store = await openStore(directory: '/Users/adrian/Development/template/test/test_assets/template');
+        final store = await openStore(directory: '/Users/adrian/Development/campervan/test/test_assets/campervan');
         return store;
       }
     }

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:template/src/common_widgets/app_bar.dart';
-import 'package:template/src/constants/theme_provider.dart';
-import 'package:template/src/features/settings/settings_provider.dart';
+import 'package:campervan/src/common_widgets/app_bar.dart';
+import 'package:campervan/src/constants/theme_provider.dart';
+import 'package:campervan/src/features/settings/settings_provider.dart';
 
 class HomePage extends ConsumerStatefulWidget {
   const HomePage({super.key});

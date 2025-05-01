@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:template/src/features/home/homepage.dart';
-import 'package:template/src/features/settings/presentation/settings_view.dart';
-import 'package:template/src/routing/app_startup.dart';
+import 'package:campervan/src/features/home/homepage.dart';
+import 'package:campervan/src/features/settings/presentation/settings_view.dart';
+import 'package:campervan/src/routing/app_startup.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'app_router.g.dart';

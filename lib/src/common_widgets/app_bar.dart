@@ -3,10 +3,10 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
-import 'package:template/src/constants/app_sizes.dart';
-import 'package:template/src/constants/theme_provider.dart';
-import 'package:template/src/routing/app_router.dart';
-import 'package:template/src/constants/theme.dart';
+import 'package:campervan/src/constants/app_sizes.dart';
+import 'package:campervan/src/constants/theme_provider.dart';
+import 'package:campervan/src/routing/app_router.dart';
+import 'package:campervan/src/constants/theme.dart';
 
 class AppBarWidget extends ConsumerStatefulWidget {
   const AppBarWidget({super.key, required this.title, this.hasSubTitle = false});
@@ -68,7 +68,7 @@ class _AppBarWidgetState extends ConsumerState<AppBarWidget> {
     toggleIcon();
 
     return AppBar(
-      title: Text('Template'),
+      title: Text('CamperVan Dashboard'),
       actions: <Widget>[
         AppBarButton(title: 'Home', icon: Icons.home, route: AppRoute.home.name),
         AppBarButton(title: 'Settings', icon: FontAwesomeIcons.gear, route: AppRoute.settings.name),

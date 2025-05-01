@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:template/src/utils/logging_provider.dart';
+import 'package:campervan/src/utils/logging_provider.dart';
 import 'package:logger/logger.dart';
 
 const maxMethods = 5;

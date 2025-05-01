@@ -2,11 +2,11 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:template/src/constants/app_sizes.dart';
-import 'package:template/src/features/settings/settings_provider.dart';
+import 'package:campervan/src/constants/app_sizes.dart';
+import 'package:campervan/src/features/settings/settings_provider.dart';
 import 'package:logger/logger.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-// import 'package:template/src/features/onboarding/data/onboarding_repository.dart';
+// import 'package:campervan/src/features/onboarding/data/onboarding_repository.dart';
 
 part 'app_startup.g.dart';
 

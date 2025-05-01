@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:template/src/common_widgets/app_bar.dart';
-import 'package:template/src/constants/app_sizes.dart';
-import 'package:template/src/constants/theme.dart';
-import 'package:template/src/constants/theme_provider.dart';
-import 'package:template/src/features/settings/settings_model.dart';
-import 'package:template/src/features/settings/settings_provider.dart';
-import 'package:template/src/utils/logging_provider.dart';
-import 'package:template/src/utils/string_extension.dart';
+import 'package:campervan/src/common_widgets/app_bar.dart';
+import 'package:campervan/src/constants/app_sizes.dart';
+import 'package:campervan/src/constants/theme.dart';
+import 'package:campervan/src/constants/theme_provider.dart';
+import 'package:campervan/src/features/settings/settings_model.dart';
+import 'package:campervan/src/features/settings/settings_provider.dart';
+import 'package:campervan/src/utils/logging_provider.dart';
+import 'package:campervan/src/utils/string_extension.dart';
 import 'package:logger/logger.dart';
 
 class SettingsView extends ConsumerStatefulWidget {
