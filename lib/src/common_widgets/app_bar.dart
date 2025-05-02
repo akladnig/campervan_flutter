@@ -68,7 +68,7 @@ class _AppBarWidgetState extends ConsumerState<AppBarWidget> {
     toggleIcon();
 
     return AppBar(
-      title: Text('CamperVan Dashboard'),
+      title: Text(widget.title),
       actions: <Widget>[
         AppBarButton(title: 'Home', icon: Icons.home, route: AppRoute.home.name),
         AppBarButton(title: 'Settings', icon: FontAwesomeIcons.gear, route: AppRoute.settings.name),
