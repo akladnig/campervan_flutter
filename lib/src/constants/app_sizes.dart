@@ -19,6 +19,14 @@ class Sizes {
   /// `strokeWidth `= `baseFontSize `/ 10
   static const double strokeWidth = x2Large / 10;
 
+  // TODO work out difference in sizing between material icons and fontAwesome
+  static const double iconFA = x3Large;
+  static const double icon = x4Large;
+
+  static const double padding = medium / 2;
+  static const double margin = medium / 4;
+  static const double borderWidth = medium / 4;
+
   static const double none = 0.0;
   static const double xxSmall = xSmall / sizeRatio;
   static const double xSmall = small / sizeRatio;
@@ -47,23 +55,3 @@ const gapHSML = SizedBox(height: Sizes.small);
 const gapHMED = SizedBox(height: Sizes.medium);
 const gapHLGE = SizedBox(height: Sizes.large);
 const gapHXLG = SizedBox(height: Sizes.xLarge);
-
-// Highlight Word constants
-const highlightInset = Sizes.medium / 10.0;
-
-// Status Bar Sizes
-const iconSize = Sizes.large;
-const iconButtonPadding = 4.0;
-// iconSize + (IconButtonPadding + InkPadding + iconButtonPadding) * 2
-const statusButtonWidth = iconSize + (8 + 1 + iconButtonPadding) * 2;
-const statusBarWidth = statusButtonWidth * 5;
-
-// ToC Sizes
-const tocItemHeight = 2 * Sizes.baseFontSize * 1.4;
-const inset = Sizes.medium / 5.0;
-const chapterProgressSize = Sizes.x2Large; // 31.3
-const chapterInset = Sizes.xxSmall;
-const chapterProgressPadding = EdgeInsets.fromLTRB(
-    chapterInset / 2, chapterInset / 2, chapterInset, chapterInset / 2);
-const emptyTitlePadding = EdgeInsets.only(
-    left: chapterProgressSize + 2 * chapterInset + chapterInset / 2);
