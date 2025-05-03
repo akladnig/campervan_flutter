@@ -92,13 +92,6 @@ class Fonts {
   // etc
 }
 
-class CardStyle {
-  static const width = 300.0;
-  static const height = 400.0;
-  static const imageHeight = 300.0;
-  static const titleAuthorHeight = 300.0;
-}
-
 class SettingsStyle {
   static const width = 200.0;
 }
@@ -217,7 +210,7 @@ class AppTheme {
       ),
       dividerTheme: DividerThemeData(color: foregroundColour, thickness: 0.0),
       // iconTheme: IconThemeData(color: foregroundColour),
-      iconTheme: IconThemeData(color: Colors.green),
+      // iconTheme: IconThemeData(color: Colors.green),
       // checkboxTheme: CheckboxThemeData(
       //   checkColor: WidgetStateProperty.resolveWith<Color>(
       //       (states) => Colors.transparent),
