@@ -7,7 +7,15 @@ enum CardStyle { elevated, filled, outlined }
 /// `summary` is a small rectangular card with 2-3 items shown
 /// `standard` is s medium almost square card with 2-3 items shown
 /// `detailed` a larger squarish card with space for additional items such as sliders or progress indicators
-enum CardType { summary, standard, detailed }
+enum CardType {
+  summary(width: 250, height: 100),
+  standard(width: 250, height: 250),
+  detailed(width: 250, height: 400);
+
+  final double width;
+  final double height;
+  const CardType({required this.width, required this.height});
+}
 
 enum CardBorder { top, right, bottom, left }
 
@@ -17,7 +25,7 @@ enum CardBorder { top, right, bottom, left }
 class BaseCard extends StatelessWidget {
   const BaseCard({
     // TODO from settings
-    this.cardStyle = CardStyle.outlined,
+    this.cardStyle = CardStyle.elevated,
     this.cardType = CardType.summary,
     this.borderTop = true,
     this.borderLeft = true,
@@ -96,8 +104,8 @@ class BaseCard extends StatelessWidget {
                 ),
               ),
               child: SizedBox(
-                width: 250,
-                height: 100,
+                width: cardType.width,
+                height: cardType.height,
                 child: Padding(padding: EdgeInsets.all(Sizes.padding), child: child),
               ),
             ),
