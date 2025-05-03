@@ -22,6 +22,7 @@ class Sizes {
   // TODO work out difference in sizing between material icons and fontAwesome
   static const double iconFA = x3Large;
   static const double icon = x4Large;
+  static const double iconLge = 2 * x4Large;
 
   static const double padding = medium / 2;
   static const double margin = medium / 4;
