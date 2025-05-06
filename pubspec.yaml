@@ -31,7 +31,7 @@ dependencies:
   percent_indicator: ^4.2.3
   riverpod_annotation: ^2.6.1
   statistics: ^1.0.25
-  fast_immutable_collections: ^11.0.0
+  fast_immutable_collections: ^11.0.4
   equatable: ^2.0.7
   objectbox: ^4.1.0
   objectbox_flutter_libs: any
