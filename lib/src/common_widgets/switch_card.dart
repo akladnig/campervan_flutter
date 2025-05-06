@@ -1,6 +1,5 @@
 import 'package:campervan/src/common_widgets/base_card.dart';
 import 'package:campervan/src/constants/app_sizes.dart';
-import 'package:campervan/src/constants/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -60,10 +59,9 @@ class _SwitchCardState extends ConsumerState<SwitchCard> {
 
   @override
   Widget build(BuildContext context) {
-    final icon =
-        switchState
-            ? Icon(widget.iconData, color: Colors.green, size: Sizes.iconLge)
-            : Icon(widget.iconData, color: Colors.red, size: Sizes.iconLge);
+    final colour = switchState ? Colors.green : Colors.red;
+    final icon = Icon(widget.iconData, color: colour, size: Sizes.iconLge);
+
     return BaseCard(
       cardType: CardType.standard,
       child: Column(
