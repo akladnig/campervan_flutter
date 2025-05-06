@@ -89,6 +89,7 @@ class DeviceMap extends _$DeviceMap {
     D.solarSwitchSensor: IMap({C.switchState: 0.0}),
     D.starterBattery: IMap({C.voltage: 0.0}),
     D.battery1in: IMap({C.voltage: 0.0}),
+    D.battery2in: IMap({C.voltage: 0.0}),
     D.battery1out: IMap({C.voltage: 0.0, C.amperage: 0.0}),
     D.battery2out: IMap({C.voltage: 0.0, C.amperage: 0.0}),
     D.dcdc20A: IMap({C.voltage: 0.0, C.amperage: 0.0}),
