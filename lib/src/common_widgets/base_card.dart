@@ -1,6 +1,8 @@
 import 'package:campervan/src/constants/app_sizes.dart';
 import 'package:campervan/src/constants/theme.dart';
+import 'package:campervan/src/features/settings/settings_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 enum CardStyle { elevated, filled, outlined }
 
@@ -22,7 +24,7 @@ enum CardBorder { top, right, bottom, left }
 /// BaseCard is the base used by cards such as InfoCard, SwitchCard, ProgressIndicatorCard etc.
 /// The BaseCard can be displayed as a single widget or can be butted up against other cards, so
 /// `Border` is used to set the card Border Style.
-class BaseCard extends StatelessWidget {
+class BaseCard extends ConsumerWidget {
   const BaseCard({
     // TODO from settings
     this.cardStyle = CardStyle.elevated,
@@ -44,7 +46,10 @@ class BaseCard extends StatelessWidget {
   final Widget child;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final settings = ref.watch(settingsProvider);
+    final cardStyle = settings.cardStyle;
+
     double marginLeft = borderLeft ? Sizes.margin : 0.0;
     double marginTop = borderTop ? Sizes.margin : 0.0;
     double marginRight = borderRight ? Sizes.margin : 0.0;

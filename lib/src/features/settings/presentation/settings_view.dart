@@ -1,3 +1,4 @@
+import 'package:campervan/src/common_widgets/base_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:campervan/src/common_widgets/app_bar.dart';
@@ -37,7 +38,10 @@ class _SettingsViewState extends ConsumerState<SettingsView> {
           child: ListView(
             children: [
               gapHMED,
-              ThemeDropdown(),
+              GroupSettings(
+                labelText: 'Theming',
+                child: Column(children: [ThemeDropdown(), gapHMED, CardStyleDropdown()]),
+              ),
               gapHMED,
               GroupSettings(
                 labelText: 'Development',
@@ -106,6 +110,41 @@ class _ThemeDropdownState extends ConsumerState<ThemeDropdown> {
         ref.read(settingsProvider.notifier).setThemeMode(value!);
         setState(() {
           selectedTheme = value;
+        });
+      },
+    );
+  }
+}
+
+class CardStyleDropdown extends ConsumerStatefulWidget {
+  const CardStyleDropdown({super.key});
+
+  @override
+  ConsumerState<ConsumerStatefulWidget> createState() => _CardStyleDropdownState();
+}
+
+class _CardStyleDropdownState extends ConsumerState<CardStyleDropdown> {
+  CardStyle? selectedStyle;
+
+  @override
+  Widget build(BuildContext context) {
+    final cardStyle = ref.watch(settingsProvider).cardStyle;
+
+    final List<DropdownMenuEntry<CardStyle>> cardStyleDropdownEntries = <DropdownMenuEntry<CardStyle>>[];
+    for (final CardStyle cardStyle in CardStyle.values) {
+      cardStyleDropdownEntries.add(
+        DropdownMenuEntry<CardStyle>(value: cardStyle, label: cardStyle.name.toString().capitalise),
+      );
+    }
+    return DropdownMenu<CardStyle>(
+      initialSelection: cardStyle,
+      label: const Text('Card Style'),
+      width: SettingsStyle.width,
+      dropdownMenuEntries: cardStyleDropdownEntries,
+      onSelected: (CardStyle? value) {
+        ref.read(settingsProvider.notifier).setCardStyle(value!);
+        setState(() {
+          selectedStyle = value;
         });
       },
     );

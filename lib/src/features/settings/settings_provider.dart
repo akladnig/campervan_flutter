@@ -1,3 +1,4 @@
+import 'package:campervan/src/common_widgets/base_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:campervan/src/features/settings/settings_model.dart';
@@ -14,6 +15,7 @@ abstract class SettingsDef {
   Future<PrinterDetail> setLoggingPrinterDetail(PrinterDetail printerDetail);
   Future<int> setMethodCount(int methodCount);
   Future<ThemeMode> setThemeMode(ThemeMode themeMode);
+  Future<CardStyle> setCardStyle(CardStyle cardStyle);
 }
 
 @Riverpod(keepAlive: true)
@@ -67,6 +69,14 @@ class Settings extends _$Settings implements SettingsDef {
     state = state.copyWith(themeMode: themeMode);
     await ref.read(saveSettingsProvider.future);
     return state.themeMode;
+  }
+
+  /// Sets the `CardStyle` to be used.
+  @override
+  Future<CardStyle> setCardStyle(CardStyle cardStyle) async {
+    state = state.copyWith(cardStyle: cardStyle);
+    await ref.read(saveSettingsProvider.future);
+    return state.cardStyle;
   }
 }
 
