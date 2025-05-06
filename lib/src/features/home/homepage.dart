@@ -38,39 +38,15 @@ class _HomePageState extends ConsumerState<HomePage> {
             children: [
               Row(
                 children: [
-                  InfoCard(
-                    infoType: Characteristics.temperature,
-                    value: devices[D.ambientTemperature]![C.temperature]!,
-                    description: 'Ambient Temperature',
-                    borderRight: false,
-                    borderBottom: false,
-                  ),
-                  InfoCard(
-                    infoType: Characteristics.voltage,
-                    value: 10.5,
-                    description: 'Battery 1',
-                    borderLeft: false,
-                    borderBottom: false,
-                  ),
+                  InfoCard(device: D.ambientTemperature, borderRight: false, borderBottom: false),
+                  InfoCard(device: D.battery2in, borderLeft: false, borderBottom: false),
                 ],
               ),
 
               Row(
                 children: [
-                  InfoCard(
-                    infoType: Characteristics.temperature,
-                    value: 45.3,
-                    description: 'Battery Box Temperature',
-                    borderRight: false,
-                    borderTop: false,
-                  ),
-                  InfoCard(
-                    infoType: Characteristics.voltage,
-                    value: 12.4,
-                    description: 'Battery 2',
-                    borderLeft: false,
-                    borderTop: false,
-                  ),
+                  InfoCard(device: D.batteryBoxTemperature, borderRight: false, borderTop: false),
+                  InfoCard(device: D.battery2out, borderLeft: false, borderTop: false),
                 ],
               ),
               SwitchCard(title: 'Battery 2', iconData: Icons.battery_std),
