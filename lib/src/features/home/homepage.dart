@@ -1,4 +1,3 @@
-import 'package:campervan/src/common_widgets/base_card.dart';
 import 'package:campervan/src/common_widgets/info_card.dart';
 import 'package:campervan/src/common_widgets/switch_card.dart';
 import 'package:campervan/src/features/arduino/arduino_model.dart';
@@ -23,7 +22,7 @@ class _HomePageState extends ConsumerState<HomePage> {
   Widget build(BuildContext context) {
     theme = ref.watch(themeProvider).themeMode;
     ref.watch(settingsProvider);
-    final devices = ref.watch(deviceMapProvider);
+
     return Scaffold(
       appBar: const PreferredSize(
         preferredSize: Size.fromHeight(80.0),
@@ -38,15 +37,15 @@ class _HomePageState extends ConsumerState<HomePage> {
             children: [
               Row(
                 children: [
-                  InfoCard(device: D.ambientTemperature, borderRight: false, borderBottom: false),
-                  InfoCard(device: D.battery2in, borderLeft: false, borderBottom: false),
+                  InfoCard(device: D.ambientTemperature, border: 'tl'),
+                  InfoCard(device: D.battery2in, border: 'tr'),
                 ],
               ),
 
               Row(
                 children: [
-                  InfoCard(device: D.batteryBoxTemperature, borderRight: false, borderTop: false),
-                  InfoCard(device: D.battery2out, borderLeft: false, borderTop: false),
+                  InfoCard(device: D.batteryBoxTemperature, border: 'bl'),
+                  InfoCard(device: D.battery2out, border: 'br'),
                 ],
               ),
               SwitchCard(title: 'Battery 2', iconData: Icons.battery_std),
