@@ -5,21 +5,13 @@ import 'package:campervan/src/features/arduino/arduino_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+/// `border` is a simple string of any combination of `tlbr` -  any other characters are simply
+/// ignored.
 class InfoCard extends ConsumerWidget {
   final Devices device;
-  final bool borderTop;
-  final bool borderLeft;
-  final bool borderRight;
-  final bool borderBottom;
+  final String border;
 
-  const InfoCard({
-    required this.device,
-    this.borderTop = true,
-    this.borderLeft = true,
-    this.borderRight = true,
-    this.borderBottom = true,
-    super.key,
-  });
+  const InfoCard({required this.device, required this.border, super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -27,6 +19,11 @@ class InfoCard extends ConsumerWidget {
     final deviceMap = ref.read(deviceMapProvider);
     final characteristic = deviceMap[device]!.keys.first;
     final value = deviceMap[device]!.values.first;
+
+    bool borderTop = border.contains('t');
+    bool borderRight = border.contains('r');
+    bool borderBottom = border.contains('b');
+    bool borderLeft = border.contains('l');
 
     return BaseCard(
       borderTop: borderTop,
