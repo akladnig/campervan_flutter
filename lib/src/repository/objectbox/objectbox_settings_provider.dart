@@ -35,6 +35,7 @@ extension ObxSettingsMapper on SettingsModel {
       loggingLevel: loggingLevel,
       loggingPrinterDetail: loggingPrinterDetail,
       methodCount: methodCount,
+      cardStyle: cardStyle,
     );
   }
 }
