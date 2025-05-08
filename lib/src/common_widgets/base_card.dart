@@ -26,8 +26,6 @@ enum CardBorder { top, right, bottom, left }
 /// `Border` is used to set the card Border Style.
 class BaseCard extends ConsumerWidget {
   const BaseCard({
-    // TODO from settings
-    this.cardStyle = CardStyle.elevated,
     this.cardType = CardType.summary,
     this.borderTop = true,
     this.borderLeft = true,
@@ -37,7 +35,6 @@ class BaseCard extends ConsumerWidget {
     super.key,
   });
 
-  final CardStyle cardStyle;
   final CardType cardType;
   final bool borderTop;
   final bool borderLeft;
@@ -49,6 +46,7 @@ class BaseCard extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final settings = ref.watch(settingsProvider);
     final cardStyle = settings.cardStyle;
+    final bool isOutlined = cardStyle == CardStyle.outlined;
 
     double marginLeft = borderLeft ? Sizes.margin : 0.0;
     double marginTop = borderTop ? Sizes.margin : 0.0;
@@ -61,26 +59,21 @@ class BaseCard extends ConsumerWidget {
     double borderWidthBottom = 0.0;
 
     if (borderLeft) {
-      marginLeft = Sizes.margin;
+      marginLeft = isOutlined ? 0.0 : Sizes.margin;
       borderWidthLeft = Sizes.borderWidth;
     }
     if (borderTop) {
-      marginTop = Sizes.margin;
+      marginTop = isOutlined ? 0.0 : Sizes.margin;
       borderWidthTop = Sizes.borderWidth;
     }
     if (borderRight) {
-      marginRight = Sizes.margin;
+      marginRight = isOutlined ? 0.0 : Sizes.margin;
       borderWidthRight = Sizes.borderWidth;
     }
     if (borderBottom) {
-      marginBottom = Sizes.margin;
+      marginBottom = isOutlined ? 0.0 : Sizes.margin;
       borderWidthBottom = Sizes.borderWidth;
     }
-
-    BorderSide borderSideLeft = BorderSide(color: primaryColour, width: borderWidthLeft);
-    BorderSide borderSideTop = BorderSide(color: primaryColour, width: borderWidthTop);
-    BorderSide borderSideRight = BorderSide(color: primaryColour, width: borderWidthRight);
-    BorderSide borderSideBottom = BorderSide(color: primaryColour, width: borderWidthBottom);
 
     Radius topLeft = Radius.circular(Sizes.none);
     Radius topRight = Radius.circular(Sizes.none);
@@ -92,62 +85,27 @@ class BaseCard extends ConsumerWidget {
     if (borderBottom && borderLeft) bottomLeft = Radius.circular(Sizes.medium);
     if (borderLeft && borderTop) topLeft = Radius.circular(Sizes.medium);
 
-    switch (cardStyle) {
-      case CardStyle.elevated:
-        return Center(
-          child: Padding(
-            padding: EdgeInsets.fromLTRB(marginLeft, marginTop, marginRight, marginBottom),
-            child: Card(
-              margin: EdgeInsets.all(1.0),
-              color: Colors.white12,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.only(
-                  topLeft: topLeft,
-                  topRight: topRight,
-                  bottomLeft: bottomLeft,
-                  bottomRight: bottomRight,
-                ),
-              ),
-              child: SizedBox(
-                width: cardType.width,
-                height: cardType.height,
-                child: Padding(padding: EdgeInsets.all(Sizes.padding), child: child),
-              ),
+    return Center(
+      child: Padding(
+        padding: EdgeInsets.fromLTRB(marginLeft, marginTop, marginRight, marginBottom),
+        child: Card(
+          margin: EdgeInsets.all(0.0),
+          color: Colors.white12,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+              topLeft: topLeft,
+              topRight: topRight,
+              bottomLeft: bottomLeft,
+              bottomRight: bottomRight,
             ),
           ),
-        );
-
-      case CardStyle.filled:
-        return Card.filled(
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Sizes.medium)),
-          child: SizedBox(width: 300, height: 200, child: child),
-        );
-
-      case CardStyle.outlined:
-        return Center(
-          child: Padding(
-            padding: EdgeInsets.fromLTRB(marginLeft, marginTop, marginRight, marginBottom),
-            child: ClipRRect(
-              borderRadius: BorderRadius.only(
-                topLeft: topLeft,
-                topRight: topRight,
-                bottomLeft: bottomLeft,
-                bottomRight: bottomRight,
-              ),
-              child: Card(
-                margin: EdgeInsets.all(0.0),
-                color: Colors.white12,
-                shape: Border(
-                  top: borderSideTop,
-                  right: borderSideRight,
-                  bottom: borderSideBottom,
-                  left: borderSideLeft,
-                ),
-                child: SizedBox(width: 200, height: 200, child: Text('Card1')),
-              ),
-            ),
+          child: SizedBox(
+            width: cardType.width,
+            height: cardType.height,
+            child: Padding(padding: EdgeInsets.all(Sizes.padding), child: child),
           ),
-        );
-    }
+        ),
+      ),
+    );
   }
 }
