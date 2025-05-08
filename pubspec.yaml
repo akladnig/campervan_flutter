@@ -36,6 +36,7 @@ dependencies:
   objectbox: ^4.1.0
   objectbox_flutter_libs: any
   web_socket_channel: ^3.0.3
+  flutter_layout_grid: ^2.0.8
 
 dev_dependencies:
 
