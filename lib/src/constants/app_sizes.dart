@@ -26,7 +26,7 @@ class Sizes {
 
   static const double padding = medium / 2;
   static const double margin = medium / 4;
-  static const double borderWidth = medium / 4;
+  static const double borderWidth = 1.0;
 
   static const double none = 0.0;
   static const double xxSmall = xSmall / sizeRatio;
