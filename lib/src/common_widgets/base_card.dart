@@ -1,5 +1,4 @@
 import 'package:campervan/src/constants/app_sizes.dart';
-import 'package:campervan/src/constants/theme.dart';
 import 'package:campervan/src/features/settings/settings_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -48,42 +47,15 @@ class BaseCard extends ConsumerWidget {
     final cardStyle = settings.cardStyle;
     final bool isOutlined = cardStyle == CardStyle.outlined;
 
-    double marginLeft = borderLeft ? Sizes.margin : 0.0;
-    double marginTop = borderTop ? Sizes.margin : 0.0;
-    double marginRight = borderRight ? Sizes.margin : 0.0;
-    double marginBottom = borderBottom ? Sizes.margin : 0.0;
+    double marginLeft = borderLeft && !isOutlined ? Sizes.margin : 0.0;
+    double marginTop = borderTop && !isOutlined ? Sizes.margin : 0.0;
+    double marginRight = borderRight && !isOutlined ? Sizes.margin : 0.0;
+    double marginBottom = borderBottom && !isOutlined ? Sizes.margin : 0.0;
 
-    double borderWidthLeft = 0.0;
-    double borderWidthTop = 0.0;
-    double borderWidthRight = 0.0;
-    double borderWidthBottom = 0.0;
-
-    if (borderLeft) {
-      marginLeft = isOutlined ? 0.0 : Sizes.margin;
-      borderWidthLeft = Sizes.borderWidth;
-    }
-    if (borderTop) {
-      marginTop = isOutlined ? 0.0 : Sizes.margin;
-      borderWidthTop = Sizes.borderWidth;
-    }
-    if (borderRight) {
-      marginRight = isOutlined ? 0.0 : Sizes.margin;
-      borderWidthRight = Sizes.borderWidth;
-    }
-    if (borderBottom) {
-      marginBottom = isOutlined ? 0.0 : Sizes.margin;
-      borderWidthBottom = Sizes.borderWidth;
-    }
-
-    Radius topLeft = Radius.circular(Sizes.none);
-    Radius topRight = Radius.circular(Sizes.none);
-    Radius bottomLeft = Radius.circular(Sizes.none);
-    Radius bottomRight = Radius.circular(Sizes.none);
-
-    if (borderTop && borderRight) topRight = Radius.circular(Sizes.medium);
-    if (borderRight && borderBottom) bottomRight = Radius.circular(Sizes.medium);
-    if (borderBottom && borderLeft) bottomLeft = Radius.circular(Sizes.medium);
-    if (borderLeft && borderTop) topLeft = Radius.circular(Sizes.medium);
+    double topLeftRadius = borderTop && borderLeft ? Sizes.medium : Sizes.none;
+    double topRightRadius = borderTop && borderRight ? Sizes.medium : Sizes.none;
+    double bottomLeftRadius = borderBottom && borderLeft ? Sizes.medium : Sizes.none;
+    double bottomRightRadius = borderBottom && borderRight ? Sizes.medium : Sizes.none;
 
     return Center(
       child: Padding(
@@ -93,10 +65,10 @@ class BaseCard extends ConsumerWidget {
           color: Colors.white12,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.only(
-              topLeft: topLeft,
-              topRight: topRight,
-              bottomLeft: bottomLeft,
-              bottomRight: bottomRight,
+              topLeft: Radius.circular(topLeftRadius),
+              topRight: Radius.circular(topRightRadius),
+              bottomLeft: Radius.circular(bottomLeftRadius),
+              bottomRight: Radius.circular(bottomRightRadius),
             ),
           ),
           child: SizedBox(
