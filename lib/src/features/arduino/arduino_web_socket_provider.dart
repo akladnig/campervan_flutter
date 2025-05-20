@@ -13,14 +13,12 @@ part 'arduino_web_socket_provider.g.dart';
 @Riverpod(keepAlive: true)
 class ArduinoWebSocket extends _$ArduinoWebSocket {
   WebSocketChannel? channel;
-  var _isDisposed = false;
 
   @override
   Future<WebSocketChannel?> build() async {
     if (channel != null) return channel;
 
     await connect();
-    listen();
     debugPrint('Arduino Web socket - connnected');
     return channel;
   }
@@ -40,51 +38,72 @@ class ArduinoWebSocket extends _$ArduinoWebSocket {
     debugPrint('Websocket: $channel connected');
     return channel!;
   }
+}
+
+class ArduinoRepository {
+  final WebSocketChannel channel;
+  var _isDisposed = false;
 
   final streamController = StreamController<Map<String, dynamic>>();
+
+  ArduinoRepository(this.channel) {
+    listen(channel);
+  }
+
   Stream<Map<String, dynamic>> get stream => streamController.stream;
 
-  void listen() {
+  void listen(WebSocketChannel channel) {
     Map<String, dynamic> jsonData = {};
     if (_isDisposed) return;
 
-    channel?.stream.listen(
+    channel.stream.listen(
       (data) {
         jsonData = jsonDecode(data as String) as Map<String, dynamic>;
         streamController.add(jsonData);
         debugPrint('${jsonData.runtimeType}: $jsonData');
       },
       onError: (e) {
-        reconnect();
+        // reconnect();
       },
     );
   }
 
-  void send(String message) {
-    channel?.sink.add(message);
+  void send(WebSocketChannel channel, String message) {
+    channel.sink.add(message);
   }
 
-  Future<WebSocketChannel?> reconnect() async {
-    if (_isDisposed) return null;
+  // Future<WebSocketChannel?> reconnect() async {
+  //   if (_isDisposed) return null;
 
-    await Future.delayed(const Duration(seconds: 3));
+  //   await Future.delayed(const Duration(seconds: 3));
 
-    return connect();
-  }
+  //   return connect();
+  // }
 
-  void close() {
+  void close(WebSocketChannel channel) {
     _isDisposed = true;
-    channel?.sink.close;
+    channel.sink.close;
+  }
+}
+
+@riverpod
+Stream<Map<String, dynamic>> jsonStream(Ref ref) async* {
+  final channel = await ref.watch(arduinoWebSocketProvider.future);
+  final arduinoRepo = ArduinoRepository(channel!);
+  final jsonDataStream = arduinoRepo.stream;
+
+  await for (final json in jsonDataStream) {
+    debugPrint('first: ${json.toString()}');
+    yield json;
   }
 }
 
 @riverpod
 Future<DeviceMap> deviceCharacteristics(Ref ref) async {
-  final jsonDataStream = ref.watch(arduinoWebSocketProvider.notifier).stream;
-  final first = await jsonDataStream.first;
-  debugPrint('first: ${first.toString()}');
+  final json = await ref.watch(jsonStreamProvider.future);
+  debugPrint('json: ${json.toString()}');
 
-  final devicesCharacteristics = DeviceMap.fromJson(first);
+  final devicesCharacteristics = DeviceMap.fromJson(json);
   debugPrint('chars: ${devicesCharacteristics.toString()}');
 
   return devicesCharacteristics;
