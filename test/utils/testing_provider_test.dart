@@ -21,14 +21,14 @@ ProviderContainer createContainer({
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
-  test('testing provider constructor test', () async {
+  test('testing provider constructor test', () {
     // Create a ProviderContainer for this test.
     // DO NOT share ProviderContainers between tests.
     final container = createContainer();
     var result = container.read(isTestingProvider);
     expect(result, (false, inMemory: true));
   });
-  test('testing provider constructor test', () async {
+  test('testing provider constructor test', () {
     // Create a ProviderContainer for this test.
     // DO NOT share ProviderContainers between tests.
     final container = createContainer();
