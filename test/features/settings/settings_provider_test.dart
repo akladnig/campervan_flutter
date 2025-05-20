@@ -31,7 +31,7 @@ void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
   group('Settings Provider tests', () {
-    test('Settings provider constructor test', () async {
+    test('Settings provider constructor test', () {
       // Create a ProviderContainer for this test.
       // DO NOT share ProviderContainers between tests.
       final container = createContainer();
