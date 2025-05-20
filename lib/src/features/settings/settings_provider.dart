@@ -81,11 +81,11 @@ class Settings extends _$Settings implements SettingsDef {
 }
 
 @riverpod
-Future<int> saveSettings(Ref ref) async {
+Future<int> saveSettings(Ref ref) {
   return obxSaveSettings(ref);
 }
 
 @riverpod
-Future<SettingsModel> loadSettings(Ref ref) async {
+Future<SettingsModel> loadSettings(Ref ref) {
   return obxLoadSettings(ref);
 }
