@@ -17,7 +17,7 @@ class Theme extends _$Theme {
   /// Toggles the theme from dark to light and vice-versa
   /// If the themeMode is system, it will set it to dark
   /// but will not change the themeMode itself
-  toggleTheme() {
+  void toggleTheme() {
     var themeMode = state.themeMode;
 
     switch (themeMode) {
@@ -37,7 +37,7 @@ class Theme extends _$Theme {
     ref.read(settingsProvider.notifier).setThemeMode(state.themeMode);
   }
 
-  setTheme(ThemeMode? theme) {
+  void setTheme(ThemeMode? theme) {
     state = theme != null ? AppTheme(theme) : AppTheme(ThemeMode.system);
   }
 
