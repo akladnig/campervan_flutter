@@ -28,7 +28,7 @@ class ObjectBox extends _$ObjectBox {
     }
   }
 
-  closeStore() {
+  void closeStore() {
     state.whenData((store) => store.close());
   }
 }
