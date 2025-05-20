@@ -3,34 +3,8 @@ import 'package:campervan/src/constants/app_sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class SwitchCard2 extends BaseCard {
-  final Icon icon;
-  final String title;
-
-  SwitchCard2({
-    super.cardStyle,
-    super.cardType = CardType.standard,
-    super.borderTop,
-    super.borderLeft,
-    super.borderRight,
-    super.borderBottom,
-    required this.icon,
-    required this.title,
-    super.key,
-  }) : super(
-         child: Column(
-           children: [
-             Row(children: [icon, gapWMED, Switch(value: true, onChanged: (value) {})]),
-             gapHMED,
-             Text(title),
-           ],
-         ),
-       );
-}
-
 class SwitchCard extends ConsumerStatefulWidget {
   const SwitchCard({
-    this.cardStyle = CardStyle.elevated,
     this.cardType = CardType.standard,
     this.borderTop = true,
     this.borderLeft = true,
@@ -41,7 +15,6 @@ class SwitchCard extends ConsumerStatefulWidget {
     super.key,
   });
 
-  final CardStyle cardStyle;
   final CardType cardType;
   final bool borderTop;
   final bool borderLeft;
@@ -55,7 +28,7 @@ class SwitchCard extends ConsumerStatefulWidget {
 }
 
 class _SwitchCardState extends ConsumerState<SwitchCard> {
-  bool switchState = true;
+  var switchState = true;
 
   @override
   Widget build(BuildContext context) {
@@ -65,6 +38,7 @@ class _SwitchCardState extends ConsumerState<SwitchCard> {
     return BaseCard(
       cardType: CardType.standard,
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Row(
             children: [
