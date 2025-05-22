@@ -26,7 +26,7 @@ class ModuleMap extends _$ModuleMap {
     M.solarPanels: ISet({D.solarPanel1, D.solarPanel2}),
     M.starterBattery: ISet({D.starterBattery}),
     M.batteryBox: ISet({
-      D.batteryBoxTemperature,
+      D.batteryBoxTemp,
       D.batteryBoxFan,
       D.battery1in,
       D.battery2in,
@@ -36,7 +36,12 @@ class ModuleMap extends _$ModuleMap {
       D.dcdc50A,
     }),
     M.fuseAndSwitchBox: ISet({D.powerSwitch, D.battery2Switch, D.solarSwitchSensor}),
-    M.waterSystem: ISet({D.inputFlowSensor, D.outputFlowSensor, D.waterTank, D.duoettoTemperature}),
+    M.waterSystem: ISet({
+      D.inputFlowSensor,
+      D.outputFlowSensor,
+      D.waterTank,
+      D.duoettoTemp,
+    }),
   });
 
   @override
