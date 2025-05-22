@@ -3,9 +3,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:campervan/src/constants/theme.dart';
 
 class AsyncValueWidget<T> extends StatelessWidget {
-  const AsyncValueWidget({super.key, required this.value, required this.data});
+  const AsyncValueWidget({super.key, required this.value, required this.data, this.skipLoadingOnReload = false});
   final AsyncValue<T> value;
   final Widget Function(T) data;
+  final bool skipLoadingOnReload;
 
   @override
   Widget build(BuildContext context) {
@@ -13,6 +14,7 @@ class AsyncValueWidget<T> extends StatelessWidget {
       data: data,
       error: (e, st) => Center(child: Text(e.toString(), style: TextStyles.error)),
       loading: () => const Center(child: SizedBox(width: 30, height: 30, child: CircularProgressIndicator())),
+      skipLoadingOnReload: skipLoadingOnReload,
     );
   }
 }
