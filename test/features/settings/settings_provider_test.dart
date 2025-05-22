@@ -37,7 +37,7 @@ void main() {
       final container = createContainer();
       expect(
         container.read(settingsProvider).toString(),
-        'SettingsModel(themeMode: ThemeMode.system, loggingLevel: Level.debug, loggingPrinterDetail: PrinterDetail.high, methodCount: 1)',
+        'SettingsModel(themeMode: ThemeMode.system, cardStyle: CardStyle.elevated, loggingLevel: Level.debug, loggingPrinterDetail: PrinterDetail.high, methodCount: 1)',
       );
     });
 
@@ -46,7 +46,7 @@ void main() {
       await container.read(settingsProvider.notifier).setThemeMode(ThemeMode.dark);
       final e1 = expectLater(
         container.read(settingsProvider).toString(),
-        'SettingsModel(themeMode: ThemeMode.dark, loggingLevel: Level.debug, loggingPrinterDetail: PrinterDetail.high, methodCount: 1)',
+        'SettingsModel(themeMode: ThemeMode.dark, cardStyle: CardStyle.elevated, loggingLevel: Level.debug, loggingPrinterDetail: PrinterDetail.high, methodCount: 1)',
       );
       expect(container.read(themeProvider).themeMode, ThemeMode.dark);
 
@@ -61,7 +61,7 @@ void main() {
 
       expect(
         container.read(settingsProvider).toString(),
-        'SettingsModel(themeMode: ThemeMode.system, loggingLevel: Level.debug, loggingPrinterDetail: PrinterDetail.high, methodCount: 1)',
+        'SettingsModel(themeMode: ThemeMode.system, cardStyle: CardStyle.elevated, loggingLevel: Level.debug, loggingPrinterDetail: PrinterDetail.high, methodCount: 1)',
       );
       expect(container.read(themeProvider).themeMode, ThemeMode.system);
       // await container.read(databaseProvider).close();
@@ -136,7 +136,7 @@ void main() {
 
       expect(
         container.read(settingsProvider).toString(),
-        'SettingsModel(themeMode: ThemeMode.dark, loggingLevel: Level.trace, loggingPrinterDetail: PrinterDetail.low, methodCount: 5)',
+        'SettingsModel(themeMode: ThemeMode.dark, cardStyle: CardStyle.elevated, loggingLevel: Level.trace, loggingPrinterDetail: PrinterDetail.low, methodCount: 5)',
       );
       expect(container.read(themeProvider).themeMode, ThemeMode.dark);
 
@@ -150,7 +150,7 @@ void main() {
       await container.read(settingsProvider.notifier).setAll(SettingsModel(themeMode: ThemeMode.light));
       expect(
         container.read(settingsProvider).toString(),
-        'SettingsModel(themeMode: ThemeMode.light, loggingLevel: Level.debug, loggingPrinterDetail: PrinterDetail.high, methodCount: 1)',
+        'SettingsModel(themeMode: ThemeMode.light, cardStyle: CardStyle.elevated, loggingLevel: Level.debug, loggingPrinterDetail: PrinterDetail.high, methodCount: 1)',
       );
 
       await container.read(saveSettingsProvider.future);
@@ -159,14 +159,14 @@ void main() {
 
       expect(
         container.read(settingsProvider).toString(),
-        'SettingsModel(themeMode: ThemeMode.dark, loggingLevel: Level.debug, loggingPrinterDetail: PrinterDetail.high, methodCount: 1)',
+        'SettingsModel(themeMode: ThemeMode.dark, cardStyle: CardStyle.elevated, loggingLevel: Level.debug, loggingPrinterDetail: PrinterDetail.high, methodCount: 1)',
       );
 
       container.read(loadSettingsProvider);
 
       expect(
         container.read(settingsProvider).toString(),
-        'SettingsModel(themeMode: ThemeMode.dark, loggingLevel: Level.debug, loggingPrinterDetail: PrinterDetail.high, methodCount: 1)',
+        'SettingsModel(themeMode: ThemeMode.dark, cardStyle: CardStyle.elevated, loggingLevel: Level.debug, loggingPrinterDetail: PrinterDetail.high, methodCount: 1)',
       );
 
       await container.read(settingsProvider.notifier).setAll(SettingsModel(themeMode: ThemeMode.dark));
