@@ -51,15 +51,17 @@ class _HomePageState extends ConsumerState<HomePage> {
                   rowSizes: [auto, auto],
                   columnSizes: [auto, auto],
                   children: [
-                    InfoCard(device: D.ambientTemperature, border: 'tl').inGridArea('at'),
+                    InfoCard(device: D.ambientTemp, border: 'tl').inGridArea('at'),
                     InfoCard(device: D.battery2in, border: 'tr').inGridArea('b2i'),
 
-                    InfoCard(device: D.batteryBoxTemperature, border: 'bl').inGridArea('bbt'),
+                    InfoCard(device: D.batteryBoxTemp, border: 'bl').inGridArea('bbt'),
                     InfoCard(device: D.battery2out, border: 'br').inGridArea('b2o'),
                   ],
                 ),
               ),
-              OutlinedBox(child: SwitchCard(title: 'Battery 2', iconData: Icons.battery_std)),
+              OutlinedBox(
+                child: SwitchCard(title: 'Battery 2', iconData: Icons.battery_std),
+              ),
             ],
           ),
         ),
@@ -84,6 +86,12 @@ class OutlinedBox extends ConsumerWidget {
             )
             : null;
 
-    return FittedBox(child: Container(margin: EdgeInsets.all(Sizes.margin), decoration: boxDecoration, child: child));
+    return FittedBox(
+      child: Container(
+        margin: EdgeInsets.all(Sizes.margin),
+        decoration: boxDecoration,
+        child: child,
+      ),
+    );
   }
 }
