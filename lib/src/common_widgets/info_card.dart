@@ -17,9 +17,6 @@ class InfoCard extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // TODO error checking on device
-    final characteristic = C.temperature;
-
     bool borderTop = border.contains('t');
     bool borderRight = border.contains('r');
     bool borderBottom = border.contains('b');
@@ -33,12 +30,12 @@ class InfoCard extends ConsumerWidget {
 
       child: Row(
         children: [
-          characteristic.icon,
+          CharacteristicIcon(device: device),
           gapWMED,
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: [CharacteristicValueWidget(device: device), Text(device.label)],
+            children: [CharacteristicValue(device: device), Text(device.label)],
           ),
         ],
       ),
@@ -46,19 +43,39 @@ class InfoCard extends ConsumerWidget {
   }
 }
 
-class CharacteristicValueWidget extends ConsumerWidget {
+class CharacteristicValue extends ConsumerWidget {
   final Devices device;
 
-  const CharacteristicValueWidget({required this.device, super.key});
+  const CharacteristicValue({required this.device, super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final deviceMap = ref.watch(deviceCharacteristicsProvider);
-    debugPrint('info: ${deviceMap.toString()}');
+    // debugPrint('info: ${deviceMap.toString()}');
 
     return AsyncValueWidget(
       value: deviceMap,
-      data: (data) => Text('${data.deviceMap[device]} ${C.temperature.units}', style: TextStyles.h1),
+      data:
+          (data) =>
+              Text('${data.value(device)} ${data.units(device)}', style: TextStyles.h1),
+      skipLoadingOnReload: true,
+    );
+  }
+}
+
+class CharacteristicIcon extends ConsumerWidget {
+  final Devices device;
+
+  const CharacteristicIcon({required this.device, super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final deviceMap = ref.watch(deviceCharacteristicsProvider);
+
+    return AsyncValueWidget(
+      value: deviceMap,
+      data: (data) => data.icon(device),
+      skipLoadingOnReload: true,
     );
   }
 }
