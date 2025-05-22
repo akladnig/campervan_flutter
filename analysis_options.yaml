@@ -43,4 +43,5 @@ analyzer:
           avoid_manual_providers_as_generated_provider_dependency: false
 
 formatter:
-  page_width: 120
+  page_width: 90
+  trailing_commas: preserve
